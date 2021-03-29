@@ -1,40 +1,16 @@
 import "./App.css";
-import pika from "./assets/pika-cropped.png";
-import meow from "./assets/meow1.mp3";
-import annoyedMeow from "./assets/annoyed-meow.mp3";
-import { useRef, useState } from "react";
-import DragThis from "./DragThis";
+import { useEffect, useRef, useState } from "react";
+import DragSleepingPika from "./DragSleepingPika";
 import Peek from "./Peek";
+import TwoCatsJoke from "./TwoCatsJoke";
 
-function App() {
-    const audioRef = useRef(null);
-    const [isShowPika, setIsShowPika] = useState(true)
-
-    function hidePika() {
-        console.log("clicked pika");
-        if (audioRef.current) {
-            audioRef.current.play();
-        }
-        setIsShowPika(false)
-    }
+export default function App() {
 
     return (
-        <div>
-            <DragThis />
+        <div className="page">
+            <DragSleepingPika />
             <Peek />
-            {/* <div className="flex-container">
-                <div className="flex-item"></div>
-                <div className="flex-item"></div>
-                <div className="flex-item">
-                    <div className="box">
-                        <img style={{display: isShowPika ? "block" : "none"}} onDoubleClick={hidePika} src={pika} alt="pika" />
-                    </div>
-                </div>
-                <div className="flex-item"></div>
-            </div>
-            <audio ref={audioRef} id="audio" src={meow}></audio> */}
+            <TwoCatsJoke />
         </div>
     );
 }
-
-export default App;

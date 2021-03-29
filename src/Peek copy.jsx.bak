@@ -5,6 +5,9 @@ import cuteMeow from "./assets/cute-meow.wav";
 
 export default function Peek() {
     const [speechCounter, setSpeechCounter] = useState(0)
+    const [speech1, setSpeech1] = useState(false)
+    const [speech2, setSpeech2] = useState(false)
+    const [speech3, setSpeech3] = useState(false)
     const [isShowPika, setIsShowPika] = useState(true)
     const audioSpeech1 = useRef(null);
 
@@ -16,14 +19,23 @@ export default function Peek() {
 
     function byePika() {
         setTimeout(() => {
+            setSpeech3(false)
             setIsShowPika(false)
-            setSpeechCounter(prevState => prevState + 1)
         }, 3000)
     }
 
     
     function saySpeech() {
-        if (speechCounter !== 3) {
+        if (speechCounter === 0) {
+            setSpeech1(true)
+            setSpeechCounter(prevState => prevState + 1)
+        } else if (speechCounter === 1) {
+            setSpeech1(false)
+            setSpeech2(true)
+            setSpeechCounter(prevState => prevState + 1)
+        } else if (speechCounter === 2) {
+            setSpeech2(false)
+            setSpeech3(true)
             setSpeechCounter(prevState => prevState + 1)
         }
 
@@ -35,13 +47,13 @@ export default function Peek() {
 
     return (
         <div>
-            <div id="thought-parent" style={{ display: speechCounter === 1 ? "block" : "none" }}>
+            <div id="thought-parent" style={{ display: speech1 ? "block" : "none" }}>
                 <div className="thought">Hello human.</div>
             </div>
-            <div id="thought-parent" style={{ display: speechCounter === 2 ? "block" : "none" }}>
+            <div id="thought-parent" style={{ display: speech2 ? "block" : "none" }}>
                 <div className="thought">I'm here to brighten up your day.</div>
             </div>
-            <div id="thought-parent" style={{ display: speechCounter === 3 ? "block" : "none" }}>
+            <div id="thought-parent" style={{ display: speech3 ? "block" : "none" }}>
                 <div className="thought">See you later~</div>
             </div>
             {isShowPika

@@ -74,3 +74,10 @@ img {
   cursor: pointer;
 } */
 
+
+.page {
+  width: 500px;
+  height: 500px;
+  background-color: cadetblue;
+  position: relative;
+}

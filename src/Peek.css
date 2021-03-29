@@ -76,28 +76,3 @@ body {
     box-shadow: 40px -34px 0 0 #fff, -28px -6px 0 -2px #fff,
         -24px 17px 0 -6px #fff, -5px 25px 0 -10px #fff;
 }
-
-.box3 {
-    width: 150px;
-    margin: 50px auto;
-    border-radius: 15px;
-    background: #ffffff;
-    color: rgb(0, 0, 0);
-    padding: 20px;
-    text-align: center;
-    font-family: arial;
-    position: relative;
-}
-
-.sb13:before {
-    content: "";
-    width: 0px;
-    height: 0px;
-    position: absolute;
-    border-left: 15px solid #ffffff;
-    border-right: 15px solid transparent;
-    border-top: 15px solid #ffffff;
-    border-bottom: 15px solid transparent;
-    right: -16px;
-    top: 0px;
-}

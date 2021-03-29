@@ -1,0 +1,123 @@
+.container {
+    display: flex;
+    position: relative;
+    width: fit-content;
+    border: 2px solid red;
+}
+
+/* .container {
+    position: relative;
+    margin-left: 500px;
+    width: fit-content;
+    border: 2px solid red;
+} */
+
+div {
+    font-size: small;
+}
+
+button {
+    border-radius: 5px;
+    margin-right: 1px;
+    margin-left: 1px;
+}
+
+#twoCats {
+    width: 140px;
+    position: relative;
+}
+
+#thought-parent-pika {
+    position: absolute;
+    bottom: 100px;
+    left: 113px;
+    z-index: 1;
+    border: 3px solid blue;
+    width: fit-content;
+}
+
+.thought-pika {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 15px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.thought-pika:before {
+    content: "";
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    bottom: 0;
+    left: 0;
+    box-shadow: -24px 25px 0 -18px rgb(255 255 255), -30px 34px 0 -19px rgb(255 255 255);
+    z-index: 5;
+    pointer-events: none;
+}
+
+
+#thought-parent-jaymee {
+    position: absolute;
+    bottom: 100px;
+    left: -50px;
+    width: fit-content;
+    z-index: 1;
+    border: 3px solid red;
+}
+
+.thought-jaymee {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 15px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.thought-jaymee:before {
+    content: "";
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    bottom: 0;
+    right: 0;
+    box-shadow: 21px 26px 0 -18px rgb(255 255 255), 28px 35px 0 -19px rgb(255 255 255);
+    z-index: 5;
+    pointer-events: none;
+
+}
+
+
+/* 
+.bubble {
+    position: relative;
+    font-family: sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    width: 300px;
+    background: #fff;
+    border-radius: 40px;
+    padding: 24px;
+    text-align: center;
+    color: #000;
+  }
+  
+  .bubble-bottom-left:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 24px solid #fff;
+    border-right: 12px solid transparent;
+    border-top: 12px solid #fff;
+    border-bottom: 20px solid transparent;
+    left: 32px;
+    bottom: -24px;
+  } */

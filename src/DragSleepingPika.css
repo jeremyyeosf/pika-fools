@@ -1,0 +1,134 @@
+#mydiv {
+    position: absolute;
+    z-index: 9;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    user-select: none;
+}
+#mydivheader {
+    padding: 10px;
+    cursor: move;
+    z-index: 10;
+    background-color: #2196f3;
+    color: #fff;
+}
+
+.container-dragthis {
+    border: 1px solid red;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    top: 250px;
+    left: 250px;
+    z-index: 11;
+}
+
+.image-dragthis {
+    cursor: pointer;
+}
+
+#blanketPika {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 80px;
+    height: auto;
+}
+
+#sleepingPika {
+    width: 50px;
+    height: auto;
+}
+
+#exit {
+    min-width: 50px;
+    min-height: 50px;
+    width: fit-content;
+    height: auto;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border: 1px solid red;
+}
+
+#pika-bed-parent {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+}
+
+.pika-bed {
+    display: flex;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 30px;
+    /* min-width: 40px; */
+    width: fit-content;
+    height: auto;
+    /* min-height: 40px; */
+    margin: 5px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.pika-bed:before,
+.pika-bed:after {
+    content: "";
+    background-color: #fff;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    z-index: -1;
+}
+.pika-bed:before {
+    width: 44px;
+    height: 44px;
+    top: -12px;
+    left: 28px;
+    box-shadow: -50px 30px 0 -12px #fff;
+}
+.pika-bed:after {
+    bottom: -10px;
+    right: 26px;
+    width: 30px;
+    height: 30px;
+    box-shadow: 40px -34px 0 0 #fff, -28px -6px 0 -2px #fff,
+        -24px 17px 0 -6px #fff, -5px 25px 0 -10px #fff;
+}
+
+#zzz-bubble-parent {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.zzz-bubble {
+    display: flex;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 15px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.zzz-bubble:before {
+    content: "";
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    z-index: -1;
+}
+.zzz-bubble:before {
+    width: 44px;
+    height: 44px;
+    top: -12px;
+    left: 28px;
+    box-shadow: -5px 35px 0 -18px rgb(255 255 255),
+        2px 43px 0 -19px rgb(255 255 255);
+}

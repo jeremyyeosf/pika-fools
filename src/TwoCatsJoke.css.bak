@@ -1,0 +1,98 @@
+div {
+    font-size: small;
+}
+
+button {
+    border-radius: 5px;
+    margin-right: 1px;
+    margin-left: 1px;
+}
+
+.thought-flex-container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    border: 3px solid black;
+    position: relative;
+}
+
+#twoCats {
+    width: 140px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+#thought-parent-pika {
+    z-index: 1;
+    border: 3px solid blue;
+}
+
+.thought-pika {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 15px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+#thought-parent-jaymee {
+    z-index: 1;
+    border: 3px solid red;
+}
+
+.thought-jaymee {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 15px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.thought-jaymee:before {
+    content: "";
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    z-index: -1;
+}
+.thought-jaymee:before {
+    width: 44px;
+    height: 44px;
+    top: -12px;
+    left: 28px;
+    box-shadow: -5px 35px 0 -18px rgb(255 255 255),
+        2px 43px 0 -19px rgb(255 255 255);
+}
+
+
+/* 
+.bubble {
+    position: relative;
+    font-family: sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    width: 300px;
+    background: #fff;
+    border-radius: 40px;
+    padding: 24px;
+    text-align: center;
+    color: #000;
+  }
+  
+  .bubble-bottom-left:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 24px solid #fff;
+    border-right: 12px solid transparent;
+    border-top: 12px solid #fff;
+    border-bottom: 20px solid transparent;
+    left: 32px;
+    bottom: -24px;
+  } */
