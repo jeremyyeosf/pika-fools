@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import DragSleepingPika from "./DragSleepingPika";
 import Peek from "./Peek";
 import TwoCatsJoke from "./TwoCatsJoke";
+import CatSong from "./CatSong";
 
 export default function App() {
 
@@ -10,7 +11,8 @@ export default function App() {
         <div className="page">
             <DragSleepingPika />
             <Peek />
-            <TwoCatsJoke />
+            {/* <TwoCatsJoke /> */}
+            <CatSong />
         </div>
     );
 }
