@@ -29,19 +29,21 @@ export default function CatSong() {
         // console.log('speech counter', speechCounter)
         switch (speechCounter) {
             case 0:
-            case 1:
-            case 2:
-            case 3:
-            case 6:
-            case 7:
             case 9:
-            case 10:
             case 12:
                 setSpeechCounter(prevState => prevState + 1)
                 if (pikaAudioRef.current) {
                     pikaAudioRef.current.load()
                     pikaAudioRef.current.play()
                 }
+                break;
+            case 1:
+            case 2:
+            case 3:
+            case 6:
+            case 7:
+            case 10:
+                setSpeechCounter(prevState => prevState + 1)
                 break;
             default:
                 break;
@@ -82,7 +84,7 @@ export default function CatSong() {
             {isShowPika
                 ?
                 <>
-                    {/* <div>Speech Counter: {speechCounter}</div> */}
+                    <div>Speech Counter: {speechCounter}</div>
                     <div>
                         <div id="thought-parent-catsong" style={{ display: speechCounter === 1 ? "block" : "none" }}>
                             <div className="thought-catsong">Hi again Human.</div>

@@ -29,7 +29,7 @@ export default function Peek() {
         if (speechCounter !== 3) {
             setSpeechCounter(prevState => prevState + 1)
         }
-        if (audioSpeech1.current) {
+        if (speechCounter === 0 && audioSpeech1.current) {
             audioSpeech1.current.load()
             audioSpeech1.current.play()
         }
@@ -55,7 +55,6 @@ export default function Peek() {
                 </div>
                 : <></>
             }
-
             <audio ref={audioSpeech1} id="audio" src={cuteMeow}></audio>
         </div>
     )

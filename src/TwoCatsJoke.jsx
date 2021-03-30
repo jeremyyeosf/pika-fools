@@ -26,22 +26,24 @@ export default function TwoCatsJoke() {
         // console.log('speech counter', speechCounter)
         switch (speechCounter) {
             case 0:
-            case 2:
             case 4:
             case 6:
-            case 7:
-            case 10:
-            case 12:
                 setSpeechCounter(prevState => prevState + 1)
                 if (pikaAudioRef.current) {
                     pikaAudioRef.current.load()
                     pikaAudioRef.current.play()
                 }
                 break;
-            case 1:
+            case 2:
             case 3:
             case 5:
+            case 7:
+            case 10:
             case 11:
+            case 12:
+                setSpeechCounter(prevState => prevState + 1)
+                break;
+            case 1:
             case 13:
                 setSpeechCounter(prevState => prevState + 1)
                 if (jaymeeAudioRef.current) {
@@ -51,10 +53,6 @@ export default function TwoCatsJoke() {
                 break;
             case 9:
                 setSpeechCounter(prevState => prevState + 2)
-                if (pikaAudioRef.current) {
-                    pikaAudioRef.current.load()
-                    pikaAudioRef.current.play()
-                }
                 break;
             default:
                 break;
@@ -82,7 +80,7 @@ export default function TwoCatsJoke() {
             {isShowCats
                 ?
                 <>
-                    {/* <div>Speech Counter: {speechCounter}</div> */}
+                    <div>Speech Counter: {speechCounter}</div>
                     <div>
                         <div id="thought-parent-pika" style={{ display: speechCounter === 1 ? "block" : "none" }}>
                             <div className="thought-pika">Hey Jaymee.</div>

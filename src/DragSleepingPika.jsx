@@ -144,7 +144,7 @@ export default function DragSleepingPika() {
                 ref={pikaRef}
                 onMouseDown={(e) => mouseDown(e)}
                 onMouseUp={(e) => mouseUp(e)}
-                onDoubleClick={hidePika}
+                // onDoubleClick={hidePika}
                 style={{ display: isShowPika ? "block" : "none" }}
             >
 
