@@ -9,7 +9,7 @@ button {
 }
 
 #twoCats {
-    width: 140px;
+    width: 160px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -17,10 +17,9 @@ button {
 
 #thought-parent-pika {
     position: absolute;
-    bottom: 100px;
-    left: 113px;
+    bottom: 110px;
+    left: 123px;
     z-index: 1;
-    /* border: 3px solid blue; */
     width: 200px;
 }
 
@@ -47,14 +46,12 @@ button {
     pointer-events: none;
 }
 
-
 #thought-parent-jaymee {
     position: absolute;
-    bottom: 100px;
-    left: -180px;
+    bottom: 110px;
+    left: -170px;
     width: 200px;
     z-index: 1;
-    /* border: 3px solid red; */
 }
 
 .thought-jaymee {

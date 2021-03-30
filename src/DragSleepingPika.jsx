@@ -6,6 +6,7 @@ import useMousePosition from './useMousePosition'
 // import annoyedMeow from "./assets/annoyed-meow.mp3";
 import softMeow1 from "./assets/soft-meow-1.wav";
 import softMeow2 from "./assets/soft-meow-2.wav";
+import snore from "./assets/catsnoring.mp3";
 import sleepingPika from "./assets/sleeping-pika-cropped.png"
 import blanketPika from "./assets/pika-blanket-cropped.png"
 
@@ -18,6 +19,8 @@ export default function DragSleepingPika() {
     const [isMouseDown, setIsMouseDown] = useState(false)
     const audioHidePika = useRef(null);
     const audioMovePika = useRef(null);
+    const snoreAudio = useRef(null);
+
     const [isShowPika, setIsShowPika] = useState(true)
     // [left, right, top, bottom]
     const [pikaRect, setPikaRect] = useState(null)
@@ -29,9 +32,9 @@ export default function DragSleepingPika() {
     //     console.log("currX: ", currX, "currY: ", currY)
     // }, [currX, currY])
 
-    useEffect(() => {
-        console.log('exitRect', exitRect)
-    }, [exitRect])
+    // useEffect(() => {
+    //     console.log('exitRect', exitRect)
+    // }, [exitRect])
 
     useEffect(() => {
         if (exitRef.current) {
@@ -57,7 +60,7 @@ export default function DragSleepingPika() {
         //     rect1.left > rect2.right || 
         //     rect1.bottom < rect2.top || 
         //     rect1.top > rect2.bottom)
-        console.log('is overlapping?', pikaRect, exitRect)
+        // console.log('is overlapping?', pikaRect, exitRect)
         if (pikaRect == null || exitRect == null) {
             console.log('rect is null')
         } else {
@@ -78,11 +81,16 @@ export default function DragSleepingPika() {
     useEffect(() => {
         if (isOverlap && !isMouseDown) {
             hidePika()
+            if (snoreAudio.current) {
+                snoreAudio.current.pause()
+            }
         }
     }, [isOverlap, isMouseDown])
 
     useEffect(() => {
-
+        if (snoreAudio.current) {
+            snoreAudio.current.play()
+        }
     }, [])
 
     useEffect(() => {
@@ -105,6 +113,9 @@ export default function DragSleepingPika() {
         if (audioMovePika.current) {
             audioMovePika.current.play();
         }
+        if (snoreAudio.current) {
+            snoreAudio.current.pause()
+        }
     }
 
     function mouseUp(e) {
@@ -113,6 +124,9 @@ export default function DragSleepingPika() {
         setIsMouseDown(false)
         if (audioMovePika.current) {
             audioMovePika.current.load();
+        }
+        if (snoreAudio.current) {
+            snoreAudio.current.play()
         }
     }
 
@@ -125,12 +139,6 @@ export default function DragSleepingPika() {
 
     return (
         <>
-            {/* {isMouseDown || !isShowPika
-            ? null
-            : <div id="zzz-bubble-parent">
-                <div className="zzz-bubble">Zzz..</div>
-            </div>
-        } */}
             <div
                 className="container-dragthis"
                 ref={pikaRef}
@@ -156,14 +164,14 @@ export default function DragSleepingPika() {
                 </div>
 
             </div>
-            <div
-                id="exit"
-                ref={exitRef}
-            >
-                Move Pika here to hide her
+            <div id="exit" ref={exitRef}>
+                <div>
+                    Drag Pika here if you can't put up with her snoring
+                </div>
             </div>
             <audio preload="auto" ref={audioHidePika} id="audio" src={softMeow2}></audio>
             <audio preload="auto" ref={audioMovePika} id="audio" src={softMeow1}></audio>
+            <audio preload="auto" loop ref={snoreAudio} id="audio" src={snore}></audio>
         </>
     )
 }

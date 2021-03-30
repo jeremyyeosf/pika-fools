@@ -18,8 +18,10 @@ export default function Peek() {
         setTimeout(() => {
             setIsShowPika(false)
             setSpeechCounter(prevState => prevState + 1)
-            audioSpeech1.current.load()
-            audioSpeech1.current.play()
+            if (audioSpeech1.current) {
+                audioSpeech1.current.load()
+                audioSpeech1.current.play()
+            }
         }, 3000)
     }
 
@@ -27,7 +29,6 @@ export default function Peek() {
         if (speechCounter !== 3) {
             setSpeechCounter(prevState => prevState + 1)
         }
-
         if (audioSpeech1.current) {
             audioSpeech1.current.load()
             audioSpeech1.current.play()

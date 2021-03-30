@@ -8,23 +8,23 @@ button {
     margin-left: 1px;
 }
 
-#twoCats {
-    width: 140px;
+#pika {
+    width: 65px;
     position: absolute;
     bottom: 0;
     left: 0;
 }
 
-#thought-parent-pika {
+#thought-parent-catsong {
     position: absolute;
-    bottom: 100px;
-    left: 113px;
+    bottom: 120px;
+    left: 73px;
     z-index: 1;
     /* border: 3px solid blue; */
     width: 200px;
 }
 
-.thought-pika {
+.thought-catsong {
     background-color: #fff;
     padding: 10px;
     border-radius: 15px;
@@ -33,7 +33,7 @@ button {
     text-align: center;
 }
 
-.thought-pika:before {
+.thought-catsong:before {
     content: "";
     border-radius: 50%;
     display: block;
