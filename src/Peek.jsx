@@ -60,11 +60,3 @@ export default function Peek() {
         </div>
     )
 }
-
-
-
-
-
-
-
-{/* <div class="box3 sb13">Hello human.</div> */ }

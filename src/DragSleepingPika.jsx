@@ -102,7 +102,7 @@ export default function DragSleepingPika() {
             pikaRef.current.style.left = pikaRef.current.offsetLeft - offsetX + "px"
             pikaRef.current.style.top = pikaRef.current.offsetTop - offsetY + "px"
         }
-    }, [isMouseDown, x, y])
+    }, [isMouseDown, x, y, currX, currY])
 
     function mouseDown(e) {
         e.preventDefault()

@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import DragSleepingPika from "./DragSleepingPika";
 import Peek from "./Peek";
 import TwoCatsJoke from "./TwoCatsJoke";
