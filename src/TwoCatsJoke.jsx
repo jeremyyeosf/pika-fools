@@ -22,10 +22,7 @@ export default function TwoCatsJoke({ setEndOfCurrJoke }) {
         }
     }, [speechCounter, setEndOfCurrJoke])
 
-
-
     function catsTalk() {
-        // console.log('speech counter', speechCounter)
         switch (speechCounter) {
             case 0:
             case 4:
@@ -82,7 +79,7 @@ export default function TwoCatsJoke({ setEndOfCurrJoke }) {
             {isShowCats
                 ?
                 <>
-                    <div>Speech Counter: {speechCounter}</div>
+                    {/* <div>Speech Counter: {speechCounter}</div> */}
                     <div>
                         <div id="thought-parent-pika" style={{ display: speechCounter === 1 ? "block" : "none" }}>
                             <div className="thought-pika">Hey Jaymee.</div>

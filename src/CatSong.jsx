@@ -84,7 +84,7 @@ export default function CatSong({ setEndOfCurrJoke }) {
             {isShowPika
                 ?
                 <>
-                    <div>Speech Counter: {speechCounter}</div>
+                    {/* <div>Speech Counter: {speechCounter}</div> */}
                     <div>
                         <div id="thought-parent-catsong" style={{ display: speechCounter === 1 ? "block" : "none" }}>
                             <div className="thought-catsong">Hi again Human.</div>

@@ -9,7 +9,6 @@ export default function App() {
     const [currentJoke, setCurrentJoke] = useState(0);
     const [endOfCurrJoke, setEndOfCurrJoke] = useState(false)
 
-
     useEffect(() => {
         let timer
         if (currentJoke === 0) {
@@ -20,6 +19,7 @@ export default function App() {
         return () => {
             clearTimeout(timer);
         };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -37,16 +37,6 @@ export default function App() {
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [endOfCurrJoke])
-
-    // useEffect(() => {
-    //     var now = new Date();
-    //     var millisTill10 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 17, 22, 0, 0) - now;
-    //     if (millisTill10 < 0) {
-    //         millisTill10 += 86400000; // it's after 10am, try 10am tomorrow.
-    //     }
-    //     console.log("millisTill10", millisTill10)
-    //     setTimeout(function () { alert("It's time!") }, millisTill10);
-    // }, [])
 
     let joke;
     switch (currentJoke) {

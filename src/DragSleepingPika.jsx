@@ -10,28 +10,19 @@ import blanketPika from "./assets/pika-blanket-cropped.png"
 export default function DragSleepingPika({ setEndOfCurrJoke }) {
     const pikaRef = useRef(null)
     const exitRef = useRef(null)
+    const audioHidePika = useRef(null);
+    const audioMovePika = useRef(null);
+    const snoreAudio = useRef(null);
+    const [isShowPika, setIsShowPika] = useState(true)
+
     const { x, y } = useMousePosition();
     const [currX, setCurrX] = useState(0)
     const [currY, setCurrY] = useState(0)
     const [isMouseDown, setIsMouseDown] = useState(false)
-    const audioHidePika = useRef(null);
-    const audioMovePika = useRef(null);
-    const snoreAudio = useRef(null);
-
-    const [isShowPika, setIsShowPika] = useState(true)
     // [left, right, top, bottom]
     const [pikaRect, setPikaRect] = useState(null)
     const [exitRect, setExitRect] = useState(null)
     const [isOverlap, setIsOverlap] = useState(false)
-
-
-    // useEffect(() => {
-    //     console.log("currX: ", currX, "currY: ", currY)
-    // }, [currX, currY])
-
-    // useEffect(() => {
-    //     console.log('exitRect', exitRect)
-    // }, [exitRect])
 
     useEffect(() => {
         if (exitRef.current) {
@@ -57,7 +48,6 @@ export default function DragSleepingPika({ setEndOfCurrJoke }) {
         //     rect1.left > rect2.right || 
         //     rect1.bottom < rect2.top || 
         //     rect1.top > rect2.bottom)
-        // console.log('is overlapping?', pikaRect, exitRect)
         if (pikaRect == null || exitRect == null) {
             console.log('rect is null')
         } else {
@@ -67,10 +57,10 @@ export default function DragSleepingPika({ setEndOfCurrJoke }) {
                 pikaRect[2] > exitRect[3])
             if (overlap) {
                 setIsOverlap(true)
-                console.log('overlap', overlap)
+                // console.log('overlap', overlap)
             } else {
                 setIsOverlap(false)
-                console.log('overlap', overlap)
+                // console.log('overlap', overlap)
             }
         }
     }, [pikaRect, exitRect])
@@ -104,7 +94,7 @@ export default function DragSleepingPika({ setEndOfCurrJoke }) {
 
     function mouseDown(e) {
         e.preventDefault()
-        console.log('mouse down')
+        // console.log('mouse down')
         setIsMouseDown(true)
         setCurrX(x)
         setCurrY(y)
@@ -118,7 +108,7 @@ export default function DragSleepingPika({ setEndOfCurrJoke }) {
 
     function mouseUp(e) {
         e.preventDefault()
-        console.log('mouse up')
+        // console.log('mouse up')
         setIsMouseDown(false)
         if (audioMovePika.current) {
             audioMovePika.current.load();
@@ -145,10 +135,7 @@ export default function DragSleepingPika({ setEndOfCurrJoke }) {
                         ref={pikaRef}
                         onMouseDown={(e) => mouseDown(e)}
                         onMouseUp={(e) => mouseUp(e)}
-                    // onDoubleClick={hidePika}
-                    // style={{ display: isShowPika ? "block" : "none" }}
                     >
-
                         {isMouseDown
                             ? <img id="blanketPika" src={blanketPika} alt="" className="image-dragthis" />
                             :
@@ -163,17 +150,14 @@ export default function DragSleepingPika({ setEndOfCurrJoke }) {
                         <div id="pika-bed-parent">
                             <div className="pika-bed" style={{ display: isMouseDown ? "none" : "block" }}>Zzz   </div>
                         </div>
-
                     </div>
                     <div id="exit" ref={exitRef}>
-                        <div>
-                            Drag Pika here if you can't put up with her snoring
-                </div>
+                        <div>Drag Pika here if you can't put up with her snoring</div>
                     </div>
                     <audio preload="auto" ref={audioHidePika} id="audio" src={softMeow2}></audio>
                     <audio preload="auto" ref={audioMovePika} id="audio" src={softMeow1}></audio>
-                    <audio preload="auto" loop ref={snoreAudio} id="audio" src={snore}></audio></>
-
+                    <audio preload="auto" loop ref={snoreAudio} id="audio" src={snore}></audio>
+                </>
                 : null
 
             }
