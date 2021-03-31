@@ -4,23 +4,25 @@ import './TwoCatsJoke.css'
 import cuteMeow from "./assets/cute-meow.wav";
 import cuteMeowHigher from "./assets/cute-meow-higherpitched.wav";
 
-export default function TwoCatsJoke() {
+export default function TwoCatsJoke({ setEndOfCurrJoke }) {
     const [speechCounter, setSpeechCounter] = useState(0)
     const [isShowCats, setIsShowCats] = useState(true)
     const pikaAudioRef = useRef(null);
     const jaymeeAudioRef = useRef(null);
 
     useEffect(() => {
+        function byeCats() {
+            setTimeout(() => {
+                setIsShowCats(false)
+                setEndOfCurrJoke(true)
+            }, 3000)
+        }
         if (speechCounter === 14) {
             byeCats()
         }
-    }, [speechCounter])
+    }, [speechCounter, setEndOfCurrJoke])
 
-    function byeCats() {
-        setTimeout(() => {
-            setIsShowCats(false)
-        }, 3000)
-    }
+
 
     function catsTalk() {
         // console.log('speech counter', speechCounter)

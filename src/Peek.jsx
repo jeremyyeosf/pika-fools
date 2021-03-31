@@ -3,27 +3,27 @@ import peekingPika from "./assets/peeking-pika.png";
 import './Peek.css'
 import cuteMeow from "./assets/cute-meow.wav";
 
-export default function Peek() {
+export default function Peek({ setEndOfCurrJoke }) {
     const [speechCounter, setSpeechCounter] = useState(0)
     const [isShowPika, setIsShowPika] = useState(true)
     const audioSpeech1 = useRef(null);
 
     useEffect(() => {
+        function byePika() {
+            setTimeout(() => {
+                setIsShowPika(false)
+                setSpeechCounter(prevState => prevState + 1)
+                if (audioSpeech1.current) {
+                    audioSpeech1.current.load()
+                    audioSpeech1.current.play()
+                }
+                setEndOfCurrJoke(true)
+            }, 3000)
+        }
         if (speechCounter === 3) {
             byePika()
         }
-    }, [speechCounter])
-
-    function byePika() {
-        setTimeout(() => {
-            setIsShowPika(false)
-            setSpeechCounter(prevState => prevState + 1)
-            if (audioSpeech1.current) {
-                audioSpeech1.current.load()
-                audioSpeech1.current.play()
-            }
-        }, 3000)
-    }
+    }, [speechCounter, setEndOfCurrJoke])
 
     function saySpeech() {
         if (speechCounter !== 3) {

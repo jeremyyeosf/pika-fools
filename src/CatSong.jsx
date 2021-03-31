@@ -5,7 +5,7 @@ import cuteMeow from "./assets/cute-meow.wav";
 import cuteMeowHigher from "./assets/cute-meow-higherpitched.wav";
 import cuteMeowLower from "./assets/cute-meow-lowerpitched.wav";
 
-export default function CatSong() {
+export default function CatSong({ setEndOfCurrJoke }) {
     const [speechCounter, setSpeechCounter] = useState(0)
     const [isShowPika, setIsShowPika] = useState(true)
     const [clickedNo, setClickedNo] = useState(false)
@@ -14,16 +14,16 @@ export default function CatSong() {
     const pikaAudioSadRef = useRef(null);
 
     useEffect(() => {
+        function byePika() {
+            setTimeout(() => {
+                setIsShowPika(false)
+                setEndOfCurrJoke(true)
+            }, 3000)
+        }
         if (speechCounter === 13) {
             byePika()
         }
-    }, [speechCounter])
-
-    function byePika() {
-        setTimeout(() => {
-            setIsShowPika(false)
-        }, 3000)
-    }
+    }, [speechCounter, setEndOfCurrJoke])
 
     function catsTalk() {
         // console.log('speech counter', speechCounter)

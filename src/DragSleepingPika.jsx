@@ -1,16 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './DragSleepingPika.css'
 import useMousePosition from './useMousePosition'
-// import pika from "./assets/pika-cropped.png";
-// import pika2 from "./assets/pika2-cropped.png";
-// import annoyedMeow from "./assets/annoyed-meow.mp3";
 import softMeow1 from "./assets/soft-meow-1.wav";
 import softMeow2 from "./assets/soft-meow-2.wav";
 import snore from "./assets/catsnoring.mp3";
 import sleepingPika from "./assets/sleeping-pika-cropped.png"
 import blanketPika from "./assets/pika-blanket-cropped.png"
 
-export default function DragSleepingPika() {
+export default function DragSleepingPika({ setEndOfCurrJoke }) {
     const pikaRef = useRef(null)
     const exitRef = useRef(null)
     const { x, y } = useMousePosition();
@@ -84,8 +81,9 @@ export default function DragSleepingPika() {
             if (snoreAudio.current) {
                 snoreAudio.current.pause()
             }
+            setEndOfCurrJoke(true)
         }
-    }, [isOverlap, isMouseDown])
+    }, [isOverlap, isMouseDown, setEndOfCurrJoke])
 
     useEffect(() => {
         if (snoreAudio.current) {
@@ -139,39 +137,47 @@ export default function DragSleepingPika() {
 
     return (
         <>
-            <div
-                className="container-dragthis"
-                ref={pikaRef}
-                onMouseDown={(e) => mouseDown(e)}
-                onMouseUp={(e) => mouseUp(e)}
-                // onDoubleClick={hidePika}
-                style={{ display: isShowPika ? "block" : "none" }}
-            >
+            {isShowPika
+                ?
+                <>
+                    <div
+                        className="container-dragthis"
+                        ref={pikaRef}
+                        onMouseDown={(e) => mouseDown(e)}
+                        onMouseUp={(e) => mouseUp(e)}
+                    // onDoubleClick={hidePika}
+                    // style={{ display: isShowPika ? "block" : "none" }}
+                    >
 
-                {isMouseDown
-                    ? <img id="blanketPika" src={blanketPika} alt="" className="image-dragthis" />
-                    :
-                    <>
-                        <div id="zzz-bubble-parent">
-                            <div className="zzz-bubble">Zzz..</div>
+                        {isMouseDown
+                            ? <img id="blanketPika" src={blanketPika} alt="" className="image-dragthis" />
+                            :
+                            <>
+                                <div id="zzz-bubble-parent">
+                                    <div className="zzz-bubble">Zzz..</div>
+                                </div>
+                                <img id="sleepingPika" src={sleepingPika} alt="" className="image-dragthis" />
+                            </>
+
+                        }
+                        <div id="pika-bed-parent">
+                            <div className="pika-bed" style={{ display: isMouseDown ? "none" : "block" }}>Zzz   </div>
                         </div>
-                        <img id="sleepingPika" src={sleepingPika} alt="" className="image-dragthis" />
-                    </>
 
-                }
-                <div id="pika-bed-parent">
-                    <div className="pika-bed" style={{ display: isMouseDown ? "none" : "block" }}>Zzz   </div>
+                    </div>
+                    <div id="exit" ref={exitRef}>
+                        <div>
+                            Drag Pika here if you can't put up with her snoring
                 </div>
+                    </div>
+                    <audio preload="auto" ref={audioHidePika} id="audio" src={softMeow2}></audio>
+                    <audio preload="auto" ref={audioMovePika} id="audio" src={softMeow1}></audio>
+                    <audio preload="auto" loop ref={snoreAudio} id="audio" src={snore}></audio></>
 
-            </div>
-            <div id="exit" ref={exitRef}>
-                <div>
-                    Drag Pika here if you can't put up with her snoring
-                </div>
-            </div>
-            <audio preload="auto" ref={audioHidePika} id="audio" src={softMeow2}></audio>
-            <audio preload="auto" ref={audioMovePika} id="audio" src={softMeow1}></audio>
-            <audio preload="auto" loop ref={snoreAudio} id="audio" src={snore}></audio>
+                : null
+
+            }
+
         </>
     )
 }

@@ -6,32 +6,61 @@ import TwoCatsJoke from "./TwoCatsJoke";
 import CatSong from "./CatSong";
 
 export default function App() {
-    const [currentJoke, setCurrentJoke] = useState(1);
+    const [currentJoke, setCurrentJoke] = useState(0);
+    const [endOfCurrJoke, setEndOfCurrJoke] = useState(false)
 
-    let joke;
 
     useEffect(() => {
-        var now = new Date();
-        var millisTill10 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 17, 22, 0, 0) - now;
-        if (millisTill10 < 0) {
-            millisTill10 += 86400000; // it's after 10am, try 10am tomorrow.
+        let timer
+        if (currentJoke === 0) {
+            timer = setTimeout(() => {
+                setCurrentJoke(prev => prev + 1)
+            }, 5000)
         }
-        console.log("millisTill10", millisTill10)
-        setTimeout(function () { alert("It's time!") }, millisTill10);
+        return () => {
+            clearTimeout(timer);
+        };
     }, [])
 
+    useEffect(() => {
+        console.log('currentJoke', currentJoke)
+        console.log('end of current Joke', endOfCurrJoke)
+        let timer
+        if (endOfCurrJoke && currentJoke !== 4) {
+            timer = setTimeout(() => {
+                setCurrentJoke(prev => prev + 1)
+                setEndOfCurrJoke(false)
+            }, 5000)
+        }
+        return () => {
+            clearTimeout(timer);
+        };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [endOfCurrJoke])
+
+    // useEffect(() => {
+    //     var now = new Date();
+    //     var millisTill10 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 17, 22, 0, 0) - now;
+    //     if (millisTill10 < 0) {
+    //         millisTill10 += 86400000; // it's after 10am, try 10am tomorrow.
+    //     }
+    //     console.log("millisTill10", millisTill10)
+    //     setTimeout(function () { alert("It's time!") }, millisTill10);
+    // }, [])
+
+    let joke;
     switch (currentJoke) {
         case 1:
-            joke = <Peek />;
+            joke = <Peek setEndOfCurrJoke={setEndOfCurrJoke} />;
             break;
         case 2:
-            joke = <TwoCatsJoke />;
+            joke = <TwoCatsJoke setEndOfCurrJoke={setEndOfCurrJoke} />;
             break;
         case 3:
-            joke = <DragSleepingPika />;
+            joke = <DragSleepingPika setEndOfCurrJoke={setEndOfCurrJoke} />;
             break;
         case 4:
-            joke = <CatSong />;
+            joke = <CatSong setEndOfCurrJoke={setEndOfCurrJoke} />;
             break;
         default:
             joke = null
