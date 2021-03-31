@@ -30,7 +30,7 @@ export default function AprilFools() {
             timer = setTimeout(() => {
                 setCurrentJoke(prev => prev + 1)
                 setEndOfCurrJoke(false)
-            }, 5000)
+            }, 300000)
         }
         return () => {
             clearTimeout(timer);
