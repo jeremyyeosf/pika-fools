@@ -65,6 +65,7 @@ export default function App() {
 
     return (
         <div className="page">
+            
             <button onClick={changeJoke}>change joke</button>
             {joke}
         </div>
